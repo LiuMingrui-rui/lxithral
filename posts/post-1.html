@@ -1,0 +1,96 @@
+<!-- posts/post-1.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>非线性叙事的碎片 &mdash; Lxithral</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="floating-decor circle-1"></div>
+
+  <!-- Reading progress -->
+  <div class="reading-progress">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <header class="site-header">
+    <a href="../index.html" class="logo">Lxithral</a>
+    <nav class="site-nav">
+      <a href="../index.html">Writing</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="page-label anim-left d1">Post / 01</div>
+    <h1 class="page-title anim-up d2">
+      非线性叙事<br><span class="accent">的碎片</span>
+    </h1>
+    <div class="page-header-rule"></div>
+  </section>
+
+  <div class="post-meta-bar anim-up d4">
+    <div class="post-meta-item"><strong>Published</strong> 2025.03.14</div>
+    <div class="post-meta-item"><strong>Category</strong> 叙事理论</div>
+    <div class="post-meta-item"><strong>Reading</strong> 约 5 分钟</div>
+  </div>
+
+  <article class="post-body">
+    <p class="lead anim-up d5">当我们打碎时间的线性叙事，碎片中映照出的不再是故事的缺失，而是记忆本身的纹理。</p>
+
+    <p class="scroll-reveal">线性叙事是一种权力结构。它规定了什么在前、什么在后，什么为因、什么为果。但人类的记忆从来不是这样运作的——我们想起童年的某个下午，不是因为日历告诉我们那是 1997 年，而是因为一块特定的光线、一种特定的气味、一段早已遗忘却突然涌回的情绪。</p>
+
+    <h2 class="scroll-reveal">时间的褶皱</h2>
+
+    <p class="scroll-reveal">普鲁斯特用三千页的篇幅试图捕捉的，正是这种非线性的记忆质感。玛德琳蛋糕的味道不是触发了一条时间线，而是打开了一个褶皱——过去与现在在那个瞬间折叠在一起，彼此渗透，无法分离。</p>
+
+    <blockquote class="scroll-reveal zoom-in">
+      <p>真正的发现之旅不在于寻找新的风景，而在于拥有新的眼睛。</p>
+      <cite>Marcel Proust</cite>
+    </blockquote>
+
+    <p class="scroll-reveal">数字时代的叙事正在经历类似的解构。超链接打破了文本的线性流动，社交媒体将时间线变成算法的拼贴，而 AI 生成的内容更是从根本上质疑了「作者」与「顺序」的概念。</p>
+
+    <div class="separator scroll-reveal">&bull;</div>
+
+    <h2 class="scroll-reveal">碎片的语法</h2>
+
+    <p class="scroll-reveal">如果我们接受碎片化不是退化而是另一种形式的完整，那么我们需要一套新的语法来理解它。这种语法不关心「然后呢」，而关心「这与什么共振」。它不追问来龙去脉，而是辨认模式与回声。</p>
+
+    <p class="scroll-reveal">在非线性的空间里，一篇关于东京便利店的文章可能与一段关于宋代瓷器的笔记产生共鸣——不是因为它们在时间上相邻，而是因为它们共享某种关于「日常之美」的频率。发现这种频率，就是非线性叙事的核心技艺。</p>
+
+    <p class="scroll-reveal">碎片不是残缺。碎片是种子——它们等待着在某个人的意识中重新生长，长成一棵我们事先无法预测的树。</p>
+  </article>
+
+  <div class="post-back scroll-reveal">
+    <a href="../index.html">Back to all writing</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">&copy; 2025 Lxithral</div>
+    <div class="footer-right">All fragments converge</div>
+  </footer>
+
+  <script>
+    // Scroll reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    // Reading progress
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (scrolled / total * 100) + '%';
+    });
+  </script>
+</body>
+</html>

@@ -1,181 +1,136 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的博客</title>
-    <meta name="description" content="个人博客，记录技术与生活">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&family=DM+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lxithral</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="cursor-glow" id="cursorGlow"></div>
-<div class="scroll-progress" id="scrollProgress"></div>
+  <!-- Floating decorations -->
+  <div class="floating-decor circle-1"></div>
+  <div class="floating-decor circle-2"></div>
+  <div class="floating-decor line-1"></div>
 
-<nav class="nav">
-    <a href="index.html" class="nav-logo">我的博客</a>
-    <ul class="nav-links">
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于</a></li>
-    </ul>
-</nav>
+  <!-- Header -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Lxithral</a>
+    <nav class="site-nav">
+      <a href="index.html">Writing</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
 
-<main class="main">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-label anim-left d1">Est. 2024</div>
 
-    <section class="hero">
-        <div class="hero-label">Thoughts & Notes</div>
-        <h1>写点<em>东西</em>，<br>记点事情。</h1>
-        <p class="hero-desc">
-            一个安静的角落，记录技术探索、生活感悟和偶尔的胡思乱想。
-        </p>
-    </section>
+    <h1 class="hero-title">
+      <span class="line"><span>Lxith</span></span>
+      <span class="line"><span>ral</span></span>
+      <span class="line"><span>Journal</span></span>
+    </h1>
 
-    <section class="posts-section">
-        <h2>最近的文章</h2>
+    <p class="hero-subtitle">
+      在非线性的叙事中寻找连贯的碎片，于数字废墟之上重建意义的花园。
+    </p>
 
-        <article class="post-card">
-            <a href="posts/second-post.html">
-                <div class="post-meta">
-                    <span class="post-date">2026-04-17</span>
-                    <span class="post-tag">技术</span>
-                </div>
-                <h3>用纯 HTML 搭建一个博客</h3>
-                <p>不需要框架，不需要构建工具，HTML 和 CSS 就是一切。简单的东西往往最持久。</p>
-                <span class="post-arrow">read more →</span>
-            </a>
-        </article>
+    <div class="hero-rule"></div>
 
-        <article class="post-card">
-            <a href="posts/first-post.html">
-                <div class="post-meta">
-                    <span class="post-date">2026-04-15</span>
-                    <span class="post-tag">随笔</span>
-                </div>
-                <h3>第一篇文章</h3>
-                <p>终于把这个博客搭起来了。从零开始，记录一下这个过程，也说说为什么要写博客。</p>
-                <span class="post-arrow">read more →</span>
-            </a>
-        </article>
-
-    </section>
-
-</main>
-
-<footer class="footer">
-    <div class="footer-inner">
-        <span class="footer-copy">&copy; 2026 我的博客</span>
-        <div class="footer-links">
-            <a href="about.html">关于</a>
-        </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <span class="arrow"></span>
     </div>
-</footer>
+  </section>
 
-<script>
-// ============================
-// Cursor Glow
-// ============================
-const cursorGlow = document.getElementById('cursorGlow');
-let mouseX = -500, mouseY = -500;
+  <!-- Marquee -->
+  <div class="marquee">
+    <div class="marquee-inner">
+      <span>Nonlinear Narratives</span>
+      <span class="dot">&middot;</span>
+      <span>Digital Ruins</span>
+      <span class="dot">&middot;</span>
+      <span>Fragmented Memory</span>
+      <span class="dot">&middot;</span>
+      <span>Temporal Collapse</span>
+      <span class="dot">&middot;</span>
+      <span>Procedural Poetics</span>
+      <span class="dot">&middot;</span>
+      <span>Nonlinear Narratives</span>
+      <span class="dot">&middot;</span>
+      <span>Digital Ruins</span>
+      <span class="dot">&middot;</span>
+      <span>Fragmented Memory</span>
+      <span class="dot">&middot;</span>
+      <span>Temporal Collapse</span>
+      <span class="dot">&middot;</span>
+      <span>Procedural Poetics</span>
+      <span class="dot">&middot;</span>
+    </div>
+  </div>
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursorGlow.style.left = mouseX + 'px';
-    cursorGlow.style.top = mouseY + 'px';
-});
+  <!-- Posts -->
+  <main class="container">
+    <div class="section-header scroll-reveal">
+      <span class="section-number">01</span>
+      <h2>Latest Writing</h2>
+      <div class="line"></div>
+    </div>
 
-// ============================
-// Scroll Progress
-// ============================
-const scrollProgress = document.getElementById('scrollProgress');
+    <div class="posts-grid">
+      <a href="posts/post-1.html" class="post-card anim-scale d3">
+        <div class="post-card-image img-1">
+          <span class="card-number">01</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">2025.03.14 &mdash; 叙事</div>
+          <h3 class="post-card-title">非线性叙事的碎片</h3>
+          <p class="post-card-excerpt">当我们打碎时间的线性叙事，碎片中映照出的不再是故事的缺失，而是记忆本身的纹理。</p>
+        </div>
+      </a>
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = progress + '%';
-}, { passive: true });
+      <a href="posts/post-2.html" class="post-card anim-scale d5">
+        <div class="post-card-image img-2">
+          <span class="card-number">02</span>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-meta">2025.04.02 &mdash; 数字</div>
+          <h3 class="post-card-title">数字废墟漫步</h3>
+          <p class="post-card-excerpt">在那些被遗忘的服务器与废弃的像素之间，有一种新的考古学正在等待被发明。</p>
+        </div>
+      </a>
+    </div>
 
-// ============================
-// Scroll Reveal (Intersection Observer)
-// ============================
-const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -60px 0px',
-    threshold: 0.1
-};
+    <!-- About Teaser -->
+    <div class="about-teaser scroll-reveal">
+      <div class="about-teaser-image from-left scroll-reveal"></div>
+      <div class="about-teaser-text from-right scroll-reveal">
+        <h3>在碎片中<br>构建连贯</h3>
+        <p>Lxithral 是一个关于非线性思考的实验空间。我们相信，最有意义的发现往往诞生于看似无序的探索之中——在时间的褶皱里，在记忆的断层间。</p>
+        <a href="about.html">了解更多 &rarr;</a>
+      </div>
+    </div>
+  </main>
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-left">&copy; 2025 Lxithral</div>
+    <div class="footer-right">All fragments converge</div>
+  </footer>
+
+  <script>
+    // Scroll-triggered reveals
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const el = entry.target;
-            const delay = el.dataset.delay || 0;
-            setTimeout(() => {
-                el.classList.add('visible');
-            }, delay);
-            observer.unobserve(el);
+          entry.target.classList.add('revealed');
         }
-    });
-}, observerOptions);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.post-card').forEach((card, i) => {
-    card.dataset.delay = i * 120;
-    observer.observe(card);
-});
-
-// ============================
-// Smooth Page Transitions
-// ============================
-document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
-
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const overlay = document.createElement('div');
-        overlay.style.cssText = `
-            position: fixed; inset: 0;
-            background: #d4a853;
-            z-index: 999;
-            transform: scaleY(0);
-            transform-origin: bottom;
-        `;
-        document.body.appendChild(overlay);
-
-        requestAnimationFrame(() => {
-            overlay.style.transition = 'transform 0.5s cubic-bezier(0.65, 0, 0.35, 1)';
-            overlay.style.transform = 'scaleY(1)';
-        });
-
-        setTimeout(() => {
-            window.location.href = href;
-        }, 500);
-    });
-});
-
-// Page enter animation
-window.addEventListener('pageshow', () => {
-    const overlay = document.createElement('div');
-    overlay.style.cssText = `
-        position: fixed; inset: 0;
-        background: #d4a853;
-        z-index: 999;
-        transform: scaleY(1);
-        transform-origin: top;
-    `;
-    document.body.appendChild(overlay);
-
-    requestAnimationFrame(() => {
-        overlay.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
-        overlay.style.transform = 'scaleY(0)';
-    });
-
-    setTimeout(() => overlay.remove(), 700);
-});
-</script>
-
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

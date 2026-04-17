@@ -1,0 +1,98 @@
+<!-- posts/post-2.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字废墟漫步 &mdash; Lxithral</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <div class="floating-decor circle-2"></div>
+  <div class="floating-decor line-1"></div>
+
+  <div class="reading-progress">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <header class="site-header">
+    <a href="../index.html" class="logo">Lxithral</a>
+    <nav class="site-nav">
+      <a href="../index.html">Writing</a>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <div class="page-label anim-left d1">Post / 02</div>
+    <h1 class="page-title anim-up d2">
+      数字废墟<br><span class="accent">漫步</span>
+    </h1>
+    <div class="page-header-rule"></div>
+  </section>
+
+  <div class="post-meta-bar anim-up d4">
+    <div class="post-meta-item"><strong>Published</strong> 2025.04.02</div>
+    <div class="post-meta-item"><strong>Category</strong> 数字考古</div>
+    <div class="post-meta-item"><strong>Reading</strong> 约 6 分钟</div>
+  </div>
+
+  <article class="post-body">
+    <p class="lead anim-up d5">在那些被遗忘的服务器与废弃的像素之间，有一种新的考古学正在等待被发明。</p>
+
+    <p class="scroll-reveal">互联网不会消失，它只是被遗忘。2004 年的个人博客、2008 年的 Flash 小游戏、2012 年的 Tumblr 页面——它们依然存在于某个数据中心的硬盘上，像沉入海底的城市，完好却无人造访。</p>
+
+    <h2 class="scroll-reveal">数字地层</h2>
+
+    <p class="scroll-reveal">如果我们像考古学家一样审视互联网的历史，会发现它拥有清晰的地层结构。每一个时代都有其独特的材质：早期的文字 BBS、图文混排的 Web 1.0、富媒体的 Web 2.0、算法驱动的信息流。每一层都覆盖着前一层，但从未完全抹去它。</p>
+
+    <blockquote class="scroll-reveal zoom-in">
+      <p>废墟不是死亡的证据，而是变形的证据。</p>
+      <cite>Robert Smithson</cite>
+    </blockquote>
+
+    <p class="scroll-reveal">在这些数字地层中漫步，你会发现一种奇特的美——像素艺术的笨拙真诚、早期网页设计的过度装饰、留言板上陌生人之间罕见的深度交流。这些不是「过时」，而是一种已经消逝的与技术共处的方式。</p>
+
+    <div class="separator scroll-reveal">&bull;</div>
+
+    <h2 class="scroll-reverse">废墟中的花园</h2>
+
+    <p class="scroll-reveal">最令人着迷的发现，往往是那些在废墟中自发生长的东西。一个 2003 年的论坛，最后的帖子停留在 2009 年，但 2024 年有人偶然闯入，开始与那些沉默的头像对话。一个废弃的 GeoCities 页面，被 Wayback Machine 捕获后，成为了某个当代艺术家的灵感来源。</p>
+
+    <p class="scroll-reveal">数字废墟的独特之处在于，它们是可以被「复活」的。一座物理废墟无法重新运转，但一段代码、一个数据库、一个设计模式，可以在新的语境中被重新激活。这种可复活性使得数字考古学不仅是关于过去的研究，更是关于可能性的实验。</p>
+
+    <p class="scroll-reveal">也许，真正的数字原住民不是那些精通最新技术的人，而是那些能够在废墟中辨认出花园种子的人。他们看到的不是一个死掉的网站，而是一种尚未被实现的设计哲学；他们读到的不是一条过时的状态更新，而是一种我们已经失去的、在公共空间中真诚表达的能力。</p>
+
+    <div class="separator scroll-reveal">&bull;</div>
+
+    <p class="scroll-reveal">下一次当你偶然闯入一个被遗忘的网络角落，不要急着关掉页面。停下来，漫步一会儿。你正在踏入的，是一座等待被重新发现的花园。</p>
+  </article>
+
+  <div class="post-back scroll-reveal">
+    <a href="../index.html">Back to all writing</a>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-left">&copy; 2025 Lxithral</div>
+    <div class="footer-right">All fragments converge</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (scrolled / total * 100) + '%';
+    });
+  </script>
+</body>
+</html>
