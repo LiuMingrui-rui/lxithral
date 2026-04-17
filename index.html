@@ -9,13 +9,7 @@
 </head>
 <body>
 
-  <!-- Floating decorations -->
-  <div class="floating-decor circle-1"></div>
-  <div class="floating-decor circle-2"></div>
-  <div class="floating-decor line-1"></div>
-
-  <!-- Header -->
-  <header class="site-header">
+  <header class="site-header" id="header">
     <a href="index.html" class="logo">Lxithral</a>
     <nav class="site-nav">
       <a href="index.html">Writing</a>
@@ -23,9 +17,8 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="hero-label anim-left d1">Est. 2024</div>
+    <div class="hero-label anim-up d1">Est. 2024</div>
 
     <h1 class="hero-title">
       <span class="line"><span>Lxith</span></span>
@@ -34,103 +27,91 @@
     </h1>
 
     <p class="hero-subtitle">
-      在非线性的叙事中寻找连贯的碎片，于数字废墟之上重建意义的花园。
+      在你的叙事中寻找连贯的碎片，于数字废墟之上重建意义的花园。
     </p>
 
-    <div class="hero-rule"></div>
+    <div class="hero-line"></div>
 
     <div class="scroll-indicator">
       <span>Scroll</span>
-      <span class="arrow"></span>
+      <span class="dot"></span>
     </div>
   </section>
 
-  <!-- Marquee -->
   <div class="marquee">
     <div class="marquee-inner">
       <span>Nonlinear Narratives</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Digital Ruins</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Fragmented Memory</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Temporal Collapse</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Procedural Poetics</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Nonlinear Narratives</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Digital Ruins</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Fragmented Memory</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Temporal Collapse</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
       <span>Procedural Poetics</span>
-      <span class="dot">&middot;</span>
+      <span class="sep">&middot;</span>
     </div>
   </div>
 
-  <!-- Posts -->
-  <main class="container">
+  <main class="container posts-section">
     <div class="section-header scroll-reveal">
       <span class="section-number">01</span>
       <h2>Latest Writing</h2>
       <div class="line"></div>
     </div>
 
-    <div class="posts-grid">
-      <a href="posts/post-1.html" class="post-card anim-scale d3">
-        <div class="post-card-image img-1">
-          <span class="card-number">01</span>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-meta">2025.03.14 &mdash; 叙事</div>
-          <h3 class="post-card-title">非线性叙事的碎片</h3>
-          <p class="post-card-excerpt">当我们打碎时间的线性叙事，碎片中映照出的不再是故事的缺失，而是记忆本身的纹理。</p>
-        </div>
-      </a>
+    <a href="posts/post-1.html" class="post-card scroll-reveal">
+      <div class="post-card-meta">2025.03.14 &mdash; 叙事</div>
+      <h3 class="post-card-title">非线性叙事的碎片</h3>
+      <p class="post-card-excerpt">当我们打碎时间的线性叙事，碎片中映照出的不再是故事的缺失，而是记忆本身的纹理。</p>
+      <span class="post-card-arrow">Read &rarr;</span>
+    </a>
 
-      <a href="posts/post-2.html" class="post-card anim-scale d5">
-        <div class="post-card-image img-2">
-          <span class="card-number">02</span>
-        </div>
-        <div class="post-card-body">
-          <div class="post-card-meta">2025.04.02 &mdash; 数字</div>
-          <h3 class="post-card-title">数字废墟漫步</h3>
-          <p class="post-card-excerpt">在那些被遗忘的服务器与废弃的像素之间，有一种新的考古学正在等待被发明。</p>
-        </div>
-      </a>
-    </div>
+    <a href="posts/post-2.html" class="post-card scroll-reveal">
+      <div class="post-card-meta">2025.04.02 &mdash; 数字</div>
+      <h3 class="post-card-title">数字废墟漫步</h3>
+      <p class="post-card-excerpt">在那些被遗忘的服务器与废弃的像素之间，有一种新的考古学正在等待被发明。</p>
+      <span class="post-card-arrow">Read &rarr;</span>
+    </a>
+  </main>
 
-    <!-- About Teaser -->
+  <div class="container">
     <div class="about-teaser scroll-reveal">
-      <div class="about-teaser-image from-left scroll-reveal"></div>
+      <div class="about-teaser-visual from-left scroll-reveal"></div>
       <div class="about-teaser-text from-right scroll-reveal">
         <h3>在碎片中<br>构建连贯</h3>
-        <p>Lxithral 是一个关于非线性思考的实验空间。我们相信，最有意义的发现往往诞生于看似无序的探索之中——在时间的褶皱里，在记忆的断层间。</p>
+        <p>你猜猜Lxithral是谁</p>
         <a href="about.html">了解更多 &rarr;</a>
       </div>
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-left">&copy; 2025 Lxithral</div>
     <div class="footer-right">All fragments converge</div>
   </footer>
 
   <script>
-    // Scroll-triggered reveals
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+    });
   </script>
 </body>
 </html>

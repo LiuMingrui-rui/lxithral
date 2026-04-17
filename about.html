@@ -9,10 +9,7 @@
 </head>
 <body>
 
-  <div class="floating-decor circle-1"></div>
-  <div class="floating-decor circle-2"></div>
-
-  <header class="site-header">
+  <header class="site-header" id="header">
     <a href="index.html" class="logo">Lxithral</a>
     <nav class="site-nav">
       <a href="index.html">Writing</a>
@@ -21,16 +18,16 @@
   </header>
 
   <section class="page-header">
-    <div class="page-label anim-left d1">About</div>
+    <div class="page-label anim-up d1">About</div>
     <h1 class="page-title anim-up d2">
       关于<br><span class="accent">Lxithral</span>
     </h1>
-    <div class="page-header-rule"></div>
+    <div class="page-rule"></div>
   </section>
 
   <div class="about-layout">
-    <div class="about-portrait anim-scale d4"></div>
-    <div class="about-content anim-right d5">
+    <div class="about-portrait anim-up d4"></div>
+    <div class="about-content anim-up d5">
       <h3>一个关于非线性思考的实验</h3>
       <p>我们生活在一个被时间线性叙事所支配的世界里。从日历到时钟，从小说到历史，一切都被编织成一条从过去流向未来的直线。但如果记忆并非如此运作呢？如果意义并非如此产生呢？</p>
       <p>Lxithral 诞生于一个简单的观察：最深刻的洞察往往来自于断裂处。当我们将熟悉的叙事打碎，让碎片以新的方式重新组合，原本隐藏的模式便浮现出来。</p>
@@ -45,16 +42,16 @@
       <div class="line"></div>
     </div>
 
-    <div class="philosophy-grid">
-      <div class="philosophy-item scroll-reveal from-left">
+    <div class="philosophy-grid stagger">
+      <div class="philosophy-item scroll-reveal">
         <h4>碎片</h4>
         <p>整体是幻觉，碎片才是真实的。我们拥抱断裂与不完整，因为正是在缝隙中，新的光线得以穿透。</p>
       </div>
-      <div class="philosophy-item scroll-reveal" style="transition-delay: 0.12s;">
+      <div class="philosophy-item scroll-reveal">
         <h4>共振</h4>
         <p>看似无关的事物之间存在着隐秘的频率。写作是一种调谐——将接收器对准那些微弱的、跨越边界的回声。</p>
       </div>
-      <div class="philosophy-item scroll-reveal from-right" style="transition-delay: 0.24s;">
+      <div class="philosophy-item scroll-reveal">
         <h4>漫步</h4>
         <p>没有目的地的行走才是真正的探索。我们让好奇心引领方向，在数字迷宫中追随直觉的丝线。</p>
       </div>
@@ -71,9 +68,12 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('revealed');
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+    });
   </script>
 </body>
 </html>
