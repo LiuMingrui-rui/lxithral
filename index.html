@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <meta name="description" content="个人博客，记录技术与生活">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400&family=DM+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav">
+    <a href="index.html" class="nav-logo">我的博客</a>
+    <ul class="nav-links">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于</a></li>
+    </ul>
+</nav>
+
+<main class="main">
+
+    <section class="hero">
+        <div class="hero-label">Thoughts & Notes</div>
+        <h1>写点<em>东西</em>，<br>记点事情。</h1>
+        <p class="hero-desc">
+            一个安静的角落，记录技术探索、生活感悟和偶尔的胡思乱想。
+        </p>
+    </section>
+
+    <section class="posts-section">
+        <h2>最近的文章</h2>
+
+        <article class="post-card">
+            <a href="posts/second-post.html">
+                <div class="post-meta">
+                    <span class="post-date">2026-04-17</span>
+                    <span class="post-tag">技术</span>
+                </div>
+                <h3>用纯 HTML 搭建一个博客</h3>
+                <p>不需要框架，不需要构建工具，HTML 和 CSS 就是一切。简单的东西往往最持久。</p>
+                <span class="post-arrow">read more →</span>
+            </a>
+        </article>
+
+        <article class="post-card">
+            <a href="posts/first-post.html">
+                <div class="post-meta">
+                    <span class="post-date">2026-04-15</span>
+                    <span class="post-tag">随笔</span>
+                </div>
+                <h3>第一篇文章</h3>
+                <p>终于把这个博客搭起来了。从零开始，记录一下这个过程，也说说为什么要写博客。</p>
+                <span class="post-arrow">read more →</span>
+            </a>
+        </article>
+
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <span class="footer-copy">&copy; 2026 我的博客</span>
+        <div class="footer-links">
+            <a href="about.html">关于</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ============================
+// Cursor Glow
+// ============================
+const cursorGlow = document.getElementById('cursorGlow');
+let mouseX = -500, mouseY = -500;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorGlow.style.left = mouseX + 'px';
+    cursorGlow.style.top = mouseY + 'px';
+});
+
+// ============================
+// Scroll Progress
+// ============================
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = progress + '%';
+}, { passive: true });
+
+// ============================
+// Scroll Reveal (Intersection Observer)
+// ============================
+const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const delay = el.dataset.delay || 0;
+            setTimeout(() => {
+                el.classList.add('visible');
+            }, delay);
+            observer.unobserve(el);
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.post-card').forEach((card, i) => {
+    card.dataset.delay = i * 120;
+    observer.observe(card);
+});
+
+// ============================
+// Smooth Page Transitions
+// ============================
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:')) return;
+
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+            position: fixed; inset: 0;
+            background: #d4a853;
+            z-index: 999;
+            transform: scaleY(0);
+            transform-origin: bottom;
+        `;
+        document.body.appendChild(overlay);
+
+        requestAnimationFrame(() => {
+            overlay.style.transition = 'transform 0.5s cubic-bezier(0.65, 0, 0.35, 1)';
+            overlay.style.transform = 'scaleY(1)';
+        });
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+
+// Page enter animation
+window.addEventListener('pageshow', () => {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+        position: fixed; inset: 0;
+        background: #d4a853;
+        z-index: 999;
+        transform: scaleY(1);
+        transform-origin: top;
+    `;
+    document.body.appendChild(overlay);
+
+    requestAnimationFrame(() => {
+        overlay.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+        overlay.style.transform = 'scaleY(0)';
+    });
+
+    setTimeout(() => overlay.remove(), 700);
+});
+</script>
+
+</body>
+</html>
