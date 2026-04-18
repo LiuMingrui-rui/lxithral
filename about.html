@@ -1,21 +1,52 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About &mdash; Lxithral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MiSans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="dynamic-gradient"></div>
+  <div class="dotted-bg"></div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-  <header class="header">
+  <header class="header header-floating glass-card">
     <div class="container">
-      <a href="index.html" class="logo">Lxithral</a>
+      <a href="index.html" class="brand">L'xithral</a>
       <nav class="nav">
-        <a href="index.html">Writing</a>
-        <a href="about.html">About</a>
+        <a href="index.html" class="nav-link">Writing</a>
+        <a href="about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <header class="header header-scrolled glass-card">
+    <div class="container">
+      <a href="index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Writing</a>
+        <a href="about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
           <span class="sun">☀️</span>
           <span class="moon">🌙</span>
         </button>
@@ -25,32 +56,36 @@
 
   <section class="hero">
     <div class="container">
-      <h1 class="scroll-reveal">关于 Lxithral</h1>
+      <h1 class="hero-title anim-fade-in">关于 Lxithral</h1>
     </div>
   </section>
 
   <section class="about-content">
     <div class="container">
-      <h2 class="scroll-reveal">一个关于非线性思考的实验</h2>
-      <p class="scroll-reveal" style="animation-delay: 0.2s;">我们生活在一个被时间线性叙事所支配的世界里。从日历到时钟，从小说到历史，一切都被编织成一条从过去流向未来的直线。但如果记忆并非如此运作呢？如果意义并非如此产生呢？</p>
-      <p class="scroll-reveal" style="animation-delay: 0.3s;">Lxithral 诞生于一个简单的观察：最深刻的洞察往往来自于断裂处。当我们将熟悉的叙事打碎，让碎片以新的方式重新组合，原本隐藏的模式便浮现出来。</p>
-      <p class="scroll-reveal" style="animation-delay: 0.4s;">这里的每一篇文字都是一次探索。我们不追求结论，而是追求连接——在看似无关的事物之间发现共鸣，在数字世界的废墟中辨认出古老的纹样。</p>
+      <div class="glass-card anim-fade-in">
+        <div class="about-text">
+          <h2 class="section-title">一个关于非线性思考的实验</h2>
+          <p class="anim-fade-in" style="animation-delay: 0.2s;">我们生活在一个被时间线性叙事所支配的世界里。从日历到时钟，从小说到历史，一切都被编织成一条从过去流向未来的直线。但如果记忆并非如此运作呢？如果意义并非如此产生呢？</p>
+          <p class="anim-fade-in" style="animation-delay: 0.3s;">Lxithral 诞生于一个简单的观察：最深刻的洞察往往来自于断裂处。当我们将熟悉的叙事打碎，让碎片以新的方式重新组合，原本隐藏的模式便浮现出来。</p>
+          <p class="anim-fade-in" style="animation-delay: 0.4s;">这里的每一篇文字都是一次探索。我们不追求结论，而是追求连接——在看似无关的事物之间发现共鸣，在数字世界的废墟中辨认出古老的纹样。</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="philosophy">
     <div class="container">
-      <h2 class="scroll-reveal">Philosophy</h2>
+      <h2 class="section-title anim-fade-in">Philosophy</h2>
       <div class="philosophy-grid">
-        <div class="philosophy-item scroll-reveal from-left">
+        <div class="philosophy-item glass-card anim-slide-in-left">
           <h3>碎片</h3>
           <p>整体是幻觉，碎片才是真实的。我们拥抱断裂与不完整，因为正是在缝隙中，新的光线得以穿透。</p>
         </div>
-        <div class="philosophy-item scroll-reveal" style="animation-delay: 0.2s;">
+        <div class="philosophy-item glass-card anim-fade-in" style="animation-delay: 0.2s;">
           <h3>共振</h3>
           <p>看似无关的事物之间存在着隐秘的频率。写作是一种调谐——将接收器对准那些微弱的、跨越边界的回声。</p>
         </div>
-        <div class="philosophy-item scroll-reveal from-right" style="animation-delay: 0.4s;">
+        <div class="philosophy-item glass-card anim-slide-in-right" style="animation-delay: 0.4s;">
           <h3>漫步</h3>
           <p>没有目的地的行走才是真正的探索。我们让好奇心引领方向，在数字迷宫中追随直觉的丝线。</p>
         </div>
@@ -58,54 +93,13 @@
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer glass-card">
     <div class="container">
-      <p>&copy; 2025 Lxithral</p>
-      <p>All fragments converge</p>
+      <p class="footer-text">&copy; 2026 Lxithral</p>
+      <p class="footer-text">All fragments converge</p>
     </div>
   </footer>
 
-  <script>
-    // 主题切换功能
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    
-    // 检测系统主题偏好
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // 加载保存的主题设置
-    const savedTheme = localStorage.getItem('theme');
-    
-    // 初始化主题
-    if (savedTheme) {
-      html.classList.add(savedTheme);
-    } else if (systemPrefersDark) {
-      html.classList.add('dark-mode');
-    }
-    
-    // 主题切换按钮点击事件
-    themeToggle.addEventListener('click', () => {
-      if (html.classList.contains('dark-mode')) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        localStorage.setItem('theme', 'light-mode');
-      } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
-      }
-    });
-
-    // 滚动显示效果
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

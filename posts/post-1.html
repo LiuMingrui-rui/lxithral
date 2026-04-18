@@ -1,20 +1,33 @@
-<!-- posts/post-1.html -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>非线性叙事的碎片 &mdash; Lxithral</title>
+  <title>第一次创建网站 &mdash; L'xithral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MiSans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body class="post-page">
+  <div class="dynamic-gradient"></div>
+  <div class="dotted-bg"></div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-  <header class="header">
+  <header class="header header-floating glass-card">
     <div class="container">
-      <a href="../index.html" class="logo">Lxithral</a>
+      <a href="../index.html" class="brand">L'xithral</a>
       <nav class="nav">
-        <a href="../index.html">Writing</a>
-        <a href="../about.html">About</a>
+        <a href="../index.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
           <span class="sun">☀️</span>
           <span class="moon">🌙</span>
@@ -23,95 +36,63 @@
     </div>
   </header>
 
-  <section class="hero">
+  <header class="header header-scrolled glass-card">
     <div class="container">
-      <h1 class="scroll-reveal">非线性叙事的碎片</h1>
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container" style="display: block; text-align: center;">
+      <h1 class="hero-title anim-fade-in" style="font-size: clamp(2rem, 5vw, 3.5rem);">第一次创建网站</h1>
     </div>
   </section>
 
   <div class="container">
-    <div class="post-meta scroll-reveal">
-      <span>2025.03.14 · 叙事理论 · 约 5 分钟阅读</span>
-    </div>
+    <div class="glass-card anim-fade-in">
+      <div class="post-meta">
+        <span>2026.04.17 · 个人记录 · 约 1 分钟阅读</span>
+      </div>
 
-    <article class="post-content">
-      <p class="lead scroll-reveal">当我们打碎时间的线性叙事，碎片中映照出的不再是故事的缺失，而是记忆本身的纹理。</p>
+      <article class="post-content">
+        <p class="lead anim-fade-in" style="animation-delay: 0.2s;">今天，我创建了自己的第一个网站。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 0.2s;">线性叙事是一种权力结构。它规定了什么在前、什么在后，什么为因、什么为果。但人类的记忆从来不是这样运作的——我们想起童年的某个下午，不是因为日历告诉我们那是 1997 年，而是因为一块特定的光线、一种特定的气味、一段早已遗忘却突然涌回的情绪。</p>
+        <p class="anim-fade-in" style="animation-delay: 0.3s;">这不仅仅是一个技术项目，更是一次自我表达的开始。在这个数字时代，拥有一个属于自己的空间，能够自由地分享想法、记录思考，是一件非常有意义的事情。</p>
 
-      <h2 class="scroll-reveal" style="animation-delay: 0.3s;">时间的褶皱</h2>
+        <p class="anim-fade-in" style="animation-delay: 0.4s;">L'xithral Journal 诞生了。它可能还不够完美，但它是真实的、属于我的。从这里开始，我将记录下每一次探索、每一个灵感、每一段成长的轨迹。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 0.4s;">普鲁斯特用三千页的篇幅试图捕捉的，正是这种非线性的记忆质感。玛德琳蛋糕的味道不是触发了一条时间线，而是打开了一个褶皱——过去与现在在那个瞬间折叠在一起，彼此渗透，无法分离。</p>
+        <blockquote class="glass-card anim-scale-in" style="animation-delay: 0.5s;">
+          <p>千里之行，始于足下。</p>
+        </blockquote>
 
-      <blockquote class="scroll-reveal scale-in" style="animation-delay: 0.5s;">
-        <p>真正的发现之旅不在于寻找新的风景，而在于拥有新的眼睛。</p>
-        <cite>Marcel Proust</cite>
-      </blockquote>
+        <p class="anim-fade-in" style="animation-delay: 0.6s;">这是一个开始，而不是终点。未来还有很长的路要走，但我已经迈出了第一步。</p>
+      </article>
 
-      <p class="scroll-reveal" style="animation-delay: 0.6s;">数字时代的叙事正在经历类似的解构。超链接打破了文本的线性流动，社交媒体将时间线变成算法的拼贴，而 AI 生成的内容更是从根本上质疑了「作者」与「顺序」的概念。</p>
-
-      <h2 class="scroll-reveal" style="animation-delay: 0.7s;">碎片的语法</h2>
-
-      <p class="scroll-reveal" style="animation-delay: 0.8s;">如果我们接受碎片化不是退化而是另一种形式的完整，那么我们需要一套新的语法来理解它。这种语法不关心「然后呢」，而关心「这与什么共振」。它不追问来龙去脉，而是辨认模式与回声。</p>
-
-      <p class="scroll-reveal" style="animation-delay: 0.9s;">在非线性的空间里，一篇关于东京便利店的文章可能与一段关于宋代瓷器的笔记产生共鸣——不是因为它们在时间上相邻，而是因为它们共享某种关于「日常之美」的频率。发现这种频率，就是非线性叙事的核心技艺。</p>
-
-      <p class="scroll-reveal" style="animation-delay: 1s;">碎片不是残缺。碎片是种子——它们等待着在某个人的意识中重新生长，长成一棵我们事先无法预测的树。</p>
-    </article>
-
-    <div class="post-back scroll-reveal">
-      <a href="../index.html" class="btn scale-in" style="animation-delay: 0.2s;">Back to all writing</a>
+      <div class="post-back anim-fade-in" style="animation-delay: 1.2s;">
+        <a href="../index.html" class="btn glass-card anim-scale-in" style="animation-delay: 1.3s;">Back to all writing</a>
+      </div>
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="footer glass-card">
     <div class="container">
-      <p>&copy; 2025 Lxithral</p>
-      <p>All fragments converge</p>
+      <p class="footer-text">&copy; 2026 Lxithral</p>
+      <p class="footer-text">All fragments converge</p>
     </div>
   </footer>
 
-  <script>
-    // 主题切换功能
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    
-    // 检测系统主题偏好
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // 加载保存的主题设置
-    const savedTheme = localStorage.getItem('theme');
-    
-    // 初始化主题
-    if (savedTheme) {
-      html.classList.add(savedTheme);
-    } else if (systemPrefersDark) {
-      html.classList.add('dark-mode');
-    }
-    
-    // 主题切换按钮点击事件
-    themeToggle.addEventListener('click', () => {
-      if (html.classList.contains('dark-mode')) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        localStorage.setItem('theme', 'light-mode');
-      } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
-      }
-    });
-
-    // 滚动显示效果
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="../script.js"></script>
 </body>
 </html>

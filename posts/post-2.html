@@ -1,20 +1,33 @@
-<!-- posts/post-2.html -->
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数字废墟漫步 &mdash; Lxithral</title>
+  <title>网站结构与技术栈 &mdash; L'xithral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MiSans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 </head>
-<body>
+<body class="post-page">
+  <div class="dynamic-gradient"></div>
+  <div class="dotted-bg"></div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
 
-  <header class="header">
+  <header class="header header-floating glass-card">
     <div class="container">
-      <a href="../index.html" class="logo">Lxithral</a>
+      <a href="../index.html" class="brand">L'xithral</a>
       <nav class="nav">
-        <a href="../index.html">Writing</a>
-        <a href="../about.html">About</a>
+        <a href="../index.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
           <span class="sun">☀️</span>
           <span class="moon">🌙</span>
@@ -23,97 +36,109 @@
     </div>
   </header>
 
-  <section class="hero">
+  <header class="header header-scrolled glass-card">
     <div class="container">
-      <h1 class="scroll-reveal">数字废墟漫步</h1>
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container" style="display: block; text-align: center;">
+      <h1 class="hero-title anim-fade-in" style="font-size: clamp(2rem, 5vw, 3.5rem);">网站结构与技术栈</h1>
     </div>
   </section>
 
   <div class="container">
-    <div class="post-meta scroll-reveal">
-      <span>2025.04.02 · 数字考古 · 约 6 分钟阅读</span>
-    </div>
+    <div class="glass-card anim-fade-in">
+      <div class="post-meta">
+        <span>2026.04.18 · 技术分享 · 约 3 分钟阅读</span>
+      </div>
 
-    <article class="post-content">
-      <p class="lead scroll-reveal">在那些被遗忘的服务器与废弃的像素之间，有一种新的考古学正在等待被发明。</p>
+      <article class="post-content">
+        <p class="lead anim-fade-in" style="animation-delay: 0.2s;">探索 L'xithral Journal 的技术架构与设计理念。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 0.2s;">互联网不会消失，它只是被遗忘。2004 年的个人博客、2008 年的 Flash 小游戏、2012 年的 Tumblr 页面——它们依然存在于某个数据中心的硬盘上，像沉入海底的城市，完好却无人造访。</p>
+        <h2 class="anim-fade-in" style="animation-delay: 0.3s;">项目结构</h2>
 
-      <h2 class="scroll-reveal" style="animation-delay: 0.3s;">数字地层</h2>
+        <pre class="anim-fade-in" style="animation-delay: 0.4s;"><code><span class="code-comment">lxithral/</span>
+<span class="code-tag">├──</span> <span class="code-string">index.html</span>          <span class="code-comment"># 主页</span>
+<span class="code-tag">├──</span> <span class="code-string">about.html</span>          <span class="code-comment"># 关于页面</span>
+<span class="code-tag">├──</span> <span class="code-string">style.css</span>           <span class="code-comment"># 全局样式</span>
+<span class="code-tag">├──</span> <span class="code-string">script.js</span>           <span class="code-comment"># 交互逻辑</span>
+<span class="code-tag">├──</span> <span class="code-string">posts/</span>              <span class="code-comment"># 文章目录</span>
+<span class="code-tag">│   ├──</span> <span class="code-string">post-1.html</span>     <span class="code-comment"># 第一篇文章</span>
+<span class="code-tag">│   └──</span> <span class="code-string">post-2.html</span>     <span class="code-comment"># 第二篇文章</span>
+<span class="code-tag">└──</span> <span class="code-string">res/</span>                <span class="code-comment"># 资源文件</span>
+    <span class="code-tag">├──</span> <span class="code-string">tou.jpg</span>         <span class="code-comment"># 头像图片</span>
+    <span class="code-tag">└──</span> <span class="code-string">MiSansVF.ttf</span>    <span class="code-comment"># 可变字体</span></code></pre>
 
-      <p class="scroll-reveal" style="animation-delay: 0.4s;">如果我们像考古学家一样审视互联网的历史，会发现它拥有清晰的地层结构。每一个时代都有其独特的材质：早期的文字 BBS、图文混排的 Web 1.0、富媒体的 Web 2.0、算法驱动的信息流。每一层都覆盖着前一层，但从未完全抹去它。</p>
+        <h2 class="anim-fade-in" style="animation-delay: 0.5s;">核心技术</h2>
 
-      <blockquote class="scroll-reveal scale-in" style="animation-delay: 0.5s;">
-        <p>废墟不是死亡的证据，而是变形的证据。</p>
-        <cite>Robert Smithson</cite>
-      </blockquote>
+        <p class="anim-fade-in" style="animation-delay: 0.6s;"><strong>HTML5</strong> - 语义化标签构建清晰的文档结构，使用 <code>&lt;header&gt;</code>、<code>&lt;main&gt;</code>、<code>&lt;article&gt;</code> 等元素提升可访问性。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 0.6s;">在这些数字地层中漫步，你会发现一种奇特的美——像素艺术的笨拙真诚、早期网页设计的过度装饰、留言板上陌生人之间罕见的深度交流。这些不是「过时」，而是一种已经消逝的与技术共处的方式。</p>
+        <p class="anim-fade-in" style="animation-delay: 0.7s;"><strong>CSS3</strong> - 现代 CSS 特性实现丰富的视觉效果：</p>
+        <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.5rem;">玻璃拟态效果（backdrop-filter）</li>
+          <li style="margin-bottom: 0.5rem;">CSS Grid 和 Flexbox 响应式布局</li>
+          <li style="margin-bottom: 0.5rem;">CSS 变量实现主题切换</li>
+          <li style="margin-bottom: 0.5rem;">关键帧动画和过渡效果</li>
+        </ul>
 
-      <h2 class="scroll-reveal" style="animation-delay: 0.7s;">废墟中的花园</h2>
+        <p class="anim-fade-in" style="animation-delay: 0.8s;"><strong>JavaScript (ES6+)</strong> - 原生 JS 实现所有交互功能，无需框架依赖：</p>
+        <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.5rem;">Intersection Observer API 滚动显示动画</li>
+          <li style="margin-bottom: 0.5rem;">localStorage 持久化用户偏好</li>
+          <li style="margin-bottom: 0.5rem;">requestAnimationFrame 优化滚动性能</li>
+          <li style="margin-bottom: 0.5rem;">事件委托和防抖处理</li>
+        </ul>
 
-      <p class="scroll-reveal" style="animation-delay: 0.8s;">最令人着迷的发现，往往是那些在废墟中自发生长的东西。一个 2003 年的论坛，最后的帖子停留在 2009 年，但 2024 年有人偶然闯入，开始与那些沉默的头像对话。一个废弃的 GeoCities 页面，被 Wayback Machine 捕获后，成为了某个当代艺术家的灵感来源。</p>
+        <h2 class="anim-fade-in" style="animation-delay: 0.9s;">特色功能</h2>
 
-      <p class="scroll-reveal" style="animation-delay: 0.9s;">数字废墟的独特之处在于，它们是可以被「复活」的。一座物理废墟无法重新运转，但一段代码、一个数据库、一个设计模式，可以在新的语境中被重新激活。这种可复活性使得数字考古学不仅是关于过去的研究，更是关于可能性的实验。</p>
+        <p class="anim-fade-in" style="animation-delay: 1s;"><strong>可变字体支持</strong> - 集成 MiSans VF 可变字体，通过 font-variation-settings 实现实时字重调节（100-900），用户可以根据喜好自定义阅读体验。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 1s;">也许，真正的数字原住民不是那些精通最新技术的人，而是那些能够在废墟中辨认出花园种子的人。他们看到的不是一个死掉的网站，而是一种尚未被实现的设计哲学；他们读到的不是一条过时的状态更新，而是一种我们已经失去的、在公共空间中真诚表达的能力。</p>
+        <p class="anim-fade-in" style="animation-delay: 1.1s;"><strong>双主题系统</strong> - 深色/浅色模式无缝切换，自动检测系统偏好并保存用户选择。使用 CSS 变量统一管理颜色方案，确保一致性。</p>
 
-      <p class="scroll-reveal" style="animation-delay: 1.1s;">下一次当你偶然闯入一个被遗忘的网络角落，不要急着关掉页面。停下来，漫步一会儿。你正在踏入的，是一座等待被重新发现的花园。</p>
-    </article>
+        <p class="anim-fade-in" style="animation-delay: 1.2s;"><strong>动态背景</strong> - 多层背景效果结合：点状移动背景、渐变流光动画、模糊光斑，营造沉浸式的视觉氛围。</p>
 
-    <div class="post-back scroll-reveal">
-      <a href="../index.html" class="btn scale-in" style="animation-delay: 0.2s;">Back to all writing</a>
+        <p class="anim-fade-in" style="animation-delay: 1.3s;"><strong>3D 头像交互</strong> - 鼠标跟随的 3D 倾斜效果，使用 CSS transform 和 perspective 实现真实的透视变换。</p>
+
+        <blockquote class="glass-card anim-scale-in" style="animation-delay: 1.4s;">
+          <p>简洁而不简单，优雅且高性能。</p>
+        </blockquote>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.5s;">设计理念</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1.6s;">L'xithral Journal 坚持「零依赖」原则——不使用任何框架或库，完全依靠原生 Web 技术。这不仅减少了加载时间，更让我能够深入理解每一个效果的实现原理。</p>
+
+        <p class="anim-fade-in" style="animation-delay: 1.7s;">所有动画都经过精心调优，使用 cubic-bezier 缓动函数创造自然的运动曲线。性能方面，通过 will-change、transform 和 opacity 属性触发 GPU 加速，确保流畅的 60fps 体验。</p>
+
+        <p class="anim-fade-in" style="animation-delay: 1.8s;">这是一个持续进化的项目，每一行代码都承载着对 Web 技术的热爱与探索。</p>
+      </article>
+
+      <div class="post-back anim-fade-in" style="animation-delay: 1.3s;">
+        <a href="../index.html" class="btn glass-card anim-scale-in" style="animation-delay: 1.4s;">Back to all writing</a>
+      </div>
     </div>
   </div>
 
-  <footer class="footer">
+  <footer class="footer glass-card">
     <div class="container">
-      <p>&copy; 2025 Lxithral</p>
-      <p>All fragments converge</p>
+      <p class="footer-text">&copy; 2026 Lxithral</p>
+      <p class="footer-text">All fragments converge</p>
     </div>
   </footer>
 
-  <script>
-    // 主题切换功能
-    const themeToggle = document.getElementById('theme-toggle');
-    const html = document.documentElement;
-    
-    // 检测系统主题偏好
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    // 加载保存的主题设置
-    const savedTheme = localStorage.getItem('theme');
-    
-    // 初始化主题
-    if (savedTheme) {
-      html.classList.add(savedTheme);
-    } else if (systemPrefersDark) {
-      html.classList.add('dark-mode');
-    }
-    
-    // 主题切换按钮点击事件
-    themeToggle.addEventListener('click', () => {
-      if (html.classList.contains('dark-mode')) {
-        html.classList.remove('dark-mode');
-        html.classList.add('light-mode');
-        localStorage.setItem('theme', 'light-mode');
-      } else {
-        html.classList.remove('light-mode');
-        html.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark-mode');
-      }
-    });
-
-    // 滚动显示效果
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-  </script>
+  <script src="../script.js"></script>
 </body>
 </html>
