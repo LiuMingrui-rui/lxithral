@@ -1,3 +1,3 @@
 git add .
-git commit -m Lxithral
+git commit -m wow
 git push
