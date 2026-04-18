@@ -1,5 +1,5 @@
 @echo off
 git add .
-git commit -m the_first_demo
+git commit -m Wow
 git push
 pause
