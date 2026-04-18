@@ -1,5 +1,5 @@
-@echo off
+
 git add .
-git commit -m Wow
+git commit -m Wowbushiba
 git push
 pause
