@@ -10,96 +10,104 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="dotted-bg"></div>
-  <div class="background-blobs">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+<div class="dotted-bg"></div>
+<div class="background-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
+<header class="header header-floating glass-card">
+  <div class="container">
+    <a href="index.html" class="brand">L&apos;xithral</a>
+    <nav class="nav">
+      <a href="posts.html" class="nav-link">Writing</a>
+      <a href="about.html" class="nav-link">About</a>
+      <div class="font-weight-control">
+        <span class="font-weight-label">字重</span>
+        <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+      </button>
+    </nav>
   </div>
+</header>
 
-  <header class="header header-floating glass-card">
-    <div class="container">
-      <a href="index.html" class="brand">L'xithral</a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Writing</a>
-        <a href="about.html" class="nav-link">About</a>
-        <div class="font-weight-control">
-          <span class="font-weight-label">字重</span>
-          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
-        </div>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          <span class="sun">☀️</span>
-          <span class="moon">🌙</span>
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <header class="header header-scrolled glass-card">
-    <div class="container">
-      <a href="index.html" class="brand">L'xithral</a>
-      <nav class="nav">
-        <a href="index.html" class="nav-link">Writing</a>
-        <a href="about.html" class="nav-link">About</a>
-        <div class="font-weight-control">
-          <span class="font-weight-label">字重</span>
-          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
-        </div>
-        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
-          <span class="sun">☀️</span>
-          <span class="moon">🌙</span>
-        </button>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title anim-fade-in">欢迎来到我的主页</h1>
-          <p class="hero-subtitle anim-fade-in" style="animation-delay: 0.2s;">在你的叙事中寻找连贯的碎片，于数字废墟之上重建意义的花园。</p>
-        </div>
-        <div class="hero-image anim-scale-in" style="animation-delay: 0.3s;">
-          <img src="res/tou.jpg" alt="Profile">
-        </div>
+<header class="header header-scrolled glass-card">
+  <div class="container">
+    <a href="index.html" class="brand">L&apos;xithral</a>
+    <nav class="nav">
+      <a href="posts.html" class="nav-link">Writing</a>
+      <a href="about.html" class="nav-link">About</a>
+      <div class="font-weight-control">
+        <span class="font-weight-label">字重</span>
+        <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
       </div>
-    </section>
+      <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+      </button>
+    </nav>
+  </div>
+</header>
 
-    <section class="posts">
-      <div class="container">
-        <h2 class="section-title anim-fade-in">Latest Writing</h2>
-        <div class="post-list">
-          <a href="posts/post-1.html" class="post-card glass-card anim-fade-in">
-            <div class="post-meta">2026.04.17 · 个人记录</div>
-            <h3 class="post-title">第一次创建网站</h3>
-            <p class="post-excerpt">纪念 L'xithral Journal 的诞生，这是一个开始，而不是终点。</p>
-          </a>
-          <a href="posts/post-2.html" class="post-card glass-card anim-fade-in" style="animation-delay: 0.2s;">
-            <div class="post-meta">2026.04.18 · 技术分享</div>
-            <h3 class="post-title">网站结构与技术栈</h3>
-            <p class="post-excerpt">探索项目的技术架构、核心技术和设计理念，零依赖的原生 Web 实现。</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="about-preview">
-      <div class="container">
-        <h2 class="section-title anim-fade-in">About</h2>
-        <p class="about-text anim-fade-in" style="animation-delay: 0.2s;">在碎片中构建连贯</p>
-        <a href="about.html" class="btn glass-card anim-scale-in" style="animation-delay: 0.3s;">了解更多</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer glass-card">
+<main>
+  <section class="hero">
     <div class="container">
-      <p class="footer-text">&copy; 2026 Lxithral</p>
-      <p class="footer-text">All fragments converge</p>
+      <div class="hero-content">
+        <h1 class="hero-title anim-fade-in">欢迎来到我的主页</h1>
+        <p class="hero-subtitle anim-fade-in" style="animation-delay: 0.2s;">🌸</p>
+      </div>
+      <div class="hero-image anim-scale-in" style="animation-delay: 0.3s;">
+        <img src="res/tou.jpg" alt="Profile">
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+  <section class="posts">
+    <div class="container">
+      <h2 class="section-title anim-fade-in">Latest Writing</h2>
+      <div class="post-list">
+        <a href="posts/post-6.html" class="post-card glass-card anim-fade-in">
+          <div class="post-meta">2026.04.19 · C++竞赛</div>
+          <h3 class="post-title">动态规划入门：背包问题</h3>
+          <p class="post-excerpt">从0/1背包到多重背包，系统学习动态规划的经典题型和解题技巧。</p>
+        </a>
+        <a href="posts/post-7.html" class="post-card glass-card anim-fade-in" style="animation-delay: 0.2s;">
+          <div class="post-meta">2026.04.19 · C++竞赛</div>
+          <h3 class="post-title">图的遍历：BFS与DFS</h3>
+          <p class="post-excerpt">掌握图论基础算法，理解深度优先和广度优先搜索的应用场景与实现方法。</p>
+        </a>
+        <a href="posts/post-8.html" class="post-card glass-card anim-fade-in" style="animation-delay: 0.4s;">
+          <div class="post-meta">2026.04.19 · ROM定制</div>
+          <h3 class="post-title">澎湃OS 2~3.3 设置修改教程</h3>
+          <p class="post-excerpt">来自@kakashi1v1的完整教程，教你自定义澎湃OS设置页面样式和布局。</p>
+        </a>
+      </div>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="posts.html" class="btn glass-card anim-fade-in" style="animation-delay: 0.6s;">View all writing</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-preview">
+    <div class="container">
+      <h2 class="section-title anim-fade-in">About</h2>
+      <p class="about-text anim-fade-in" style="animation-delay: 0.2s;">在碎片中构建连贯</p>
+      <a href="about.html" class="btn glass-card anim-scale-in" style="animation-delay: 0.3s;">了解更多</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer glass-card">
+  <div class="container">
+    <p class="footer-text">&copy; 2026 L'xithral</p>
+    <p class="footer-text">All fragments converge</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图的遍历：BFS与DFS &mdash; L'xithral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MiSans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="post-page">
+  <div class="dynamic-gradient"></div>
+  <div class="dotted-bg"></div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="header header-floating glass-card">
+    <div class="container">
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../posts.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <header class="header header-scrolled glass-card">
+    <div class="container">
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../posts.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container" style="display: block; text-align: center;">
+      <h1 class="hero-title anim-fade-in" style="font-size: clamp(2rem, 5vw, 3.5rem);">图的遍历：BFS与DFS</h1>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="glass-card anim-fade-in">
+      <div class="post-meta">
+        <span>2026.04.19 · C++竞赛 · 约 7 分钟阅读</span>
+      </div>
+
+      <article class="post-content">
+        <p class="lead anim-fade-in" style="animation-delay: 0.2s;">图的遍历是图论算法的基础，BFS（广度优先搜索）和DFS（深度优先搜索）是两种最基本的遍历方式，在竞赛中应用广泛。</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 0.3s;">图的存储结构</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 0.4s;">在实现遍历之前，首先需要选择合适的图存储方式。常用的有邻接矩阵和邻接表。</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 0.5s;"><code><span class="code-tag">#include</span> <span class="code-string">&lt;bits/stdc++.h&gt;</span>
+<span class="code-tag">using namespace</span> std;
+
+<span class="code-tag">const int</span> MAXN = <span class="code-number">1005</span>;
+
+<span class="code-comment">// 邻接表存储</span>
+vector&lt;<span class="code-tag">int</span>&gt; adj[MAXN];
+
+<span class="code-comment">// 添加边（无向图）</span>
+<span class="code-tag">void</span> <span class="code-function">addEdge</span>(<span class="code-tag">int</span> u, <span class="code-tag">int</span> v) {
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+<span class="code-comment">// 初始化图</span>
+<span class="code-tag">void</span> <span class="code-function">initGraph</span>(<span class="code-tag">int</span> n) {
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        adj[i].clear();
+    }
+}</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 0.6s;">深度优先搜索（DFS）</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 0.7s;">DFS沿着一条路径尽可能深地搜索，直到无法继续才回溯。适合解决连通性、路径搜索等问题。</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 0.8s;"><code><span class="code-tag">bool</span> visited[MAXN];  <span class="code-comment">// 访问标记数组</span>
+
+<span class="code-comment">// DFS递归实现</span>
+<span class="code-tag">void</span> <span class="code-function">dfs</span>(<span class="code-tag">int</span> node) {
+    visited[node] = <span class="code-tag">true</span>;
+    cout &lt;&lt; node &lt;&lt; <span class="code-string">" "</span>;  <span class="code-comment">// 处理当前节点</span>
+    
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> neighbor : adj[node]) {
+        <span class="code-tag">if</span> (!visited[neighbor]) {
+            dfs(neighbor);
+        }
+    }
+}
+
+<span class="code-comment">// 计算连通分量个数</span>
+<span class="code-tag">int</span> <span class="code-function">countComponents</span>(<span class="code-tag">int</span> n) {
+    <span class="code-tag">int</span> components = <span class="code-number">0</span>;
+    
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        visited[i] = <span class="code-tag">false</span>;
+    }
+    
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        <span class="code-tag">if</span> (!visited[i]) {
+            dfs(i);
+            components++;
+            cout &lt;&lt; endl;
+        }
+    }
+    
+    <span class="code-tag">return</span> components;
+}
+
+<span class="code-tag">int</span> <span class="code-function">main</span>() {
+    <span class="code-tag">int</span> n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    
+    initGraph(n);
+    
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; m; i++) {
+        <span class="code-tag">int</span> u, v;
+        cin &gt;&gt; u &gt;&gt; v;
+        addEdge(u, v);
+    }
+    
+    cout &lt;&lt; <span class="code-string">"连通分量个数: "</span> &lt;&lt; countComponents(n) &lt;&lt; endl;
+    
+    <span class="code-tag">return</span> <span class="code-number">0</span>;
+}</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 0.9s;">广度优先搜索（BFS）</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1s;">BFS逐层扩展，先访问距离起点近的节点。常用于求最短路径、层次遍历等问题。</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 1.1s;"><code><span class="code-tag">int</span> dist[MAXN];  <span class="code-comment">// 距离数组</span>
+
+<span class="code-comment">// BFS求最短路径</span>
+<span class="code-tag">void</span> <span class="code-function">bfs</span>(<span class="code-tag">int</span> start, <span class="code-tag">int</span> n) {
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        dist[i] = -<span class="code-number">1</span>;  <span class="code-comment">// -1表示未访问</span>
+    }
+    
+    queue&lt;<span class="code-tag">int</span>&gt; q;
+    q.push(start);
+    dist[start] = <span class="code-number">0</span>;
+    
+    <span class="code-tag">while</span> (!q.empty()) {
+        <span class="code-tag">int</span> node = q.front();
+        q.pop();
+        
+        <span class="code-tag">for</span> (<span class="code-tag">int</span> neighbor : adj[node]) {
+            <span class="code-tag">if</span> (dist[neighbor] == -<span class="code-number">1</span>) {
+                dist[neighbor] = dist[node] + <span class="code-number">1</span>;
+                q.push(neighbor);
+            }
+        }
+    }
+}
+
+<span class="code-comment">// 打印最短距离</span>
+<span class="code-tag">void</span> <span class="code-function">printDistances</span>(<span class="code-tag">int</span> n) {
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        <span class="code-tag">if</span> (dist[i] == -<span class="code-number">1</span>) {
+            cout &lt;&lt; <span class="code-string">"节点 "</span> &lt;&lt; i &lt;&lt; <span class="code-string">": 不可达"</span> &lt;&lt; endl;
+        } <span class="code-tag">else</span> {
+            cout &lt;&lt; <span class="code-string">"节点 "</span> &lt;&lt; i &lt;&lt; <span class="code-string">": 距离为 "</span> &lt;&lt; dist[i] &lt;&lt; endl;
+        }
+    }
+}</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.2s;">实际应用示例</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1.3s;">下面是一个使用BFS解决迷宫最短路径问题的完整示例：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 1.4s;"><code><span class="code-tag">#include</span> <span class="code-string">&lt;bits/stdc++.h&gt;</span>
+<span class="code-tag">using namespace</span> std;
+
+<span class="code-tag">const int</span> MAXN = <span class="code-number">105</span>;
+<span class="code-tag">char</span> maze[MAXN][MAXN];
+<span class="code-tag">int</span> dist[MAXN][MAXN];
+<span class="code-tag">int</span> dx[] = {<span class="code-number">0</span>, <span class="code-number">0</span>, <span class="code-number">1</span>, -<span class="code-number">1</span>};  <span class="code-comment">// 四个方向</span>
+<span class="code-tag">int</span> dy[] = {<span class="code-number">1</span>, -<span class="code-number">1</span>, <span class="code-number">0</span>, <span class="code-number">0</span>};
+
+<span class="code-tag">struct</span> <span class="code-class">Point</span> {
+    <span class="code-tag">int</span> x, y;
+};
+
+<span class="code-tag">int</span> <span class="code-function">bfsMaze</span>(<span class="code-tag">int</span> startX, <span class="code-tag">int</span> startY, <span class="code-tag">int</span> endX, <span class="code-tag">int</span> endY, <span class="code-tag">int</span> n, <span class="code-tag">int</span> m) {
+    memset(dist, -<span class="code-number">1</span>, <span class="code-tag">sizeof</span>(dist));
+    
+    queue&lt;Point&gt; q;
+    q.push({startX, startY});
+    dist[startX][startY] = <span class="code-number">0</span>;
+    
+    <span class="code-tag">while</span> (!q.empty()) {
+        Point curr = q.front();
+        q.pop();
+        
+        <span class="code-comment">// 到达终点</span>
+        <span class="code-tag">if</span> (curr.x == endX &amp;&amp; curr.y == endY) {
+            <span class="code-tag">return</span> dist[endX][endY];
+        }
+        
+        <span class="code-comment">// 探索四个方向</span>
+        <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; <span class="code-number">4</span>; i++) {
+            <span class="code-tag">int</span> nx = curr.x + dx[i];
+            <span class="code-tag">int</span> ny = curr.y + dy[i];
+            
+            <span class="code-comment">// 检查边界和障碍物</span>
+            <span class="code-tag">if</span> (nx &gt;= <span class="code-number">0</span> &amp;&amp; nx &lt; n &amp;&amp; ny &gt;= <span class="code-number">0</span> &amp;&amp; ny &lt; m &amp;&amp; 
+                maze[nx][ny] != <span class="code-string">'#'</span> &amp;&amp; dist[nx][ny] == -<span class="code-number">1</span>) {
+                dist[nx][ny] = dist[curr.x][curr.y] + <span class="code-number">1</span>;
+                q.push({nx, ny});
+            }
+        }
+    }
+    
+    <span class="code-tag">return</span> -<span class="code-number">1</span>;  <span class="code-comment">// 无法到达</span>
+}
+
+<span class="code-tag">int</span> <span class="code-function">main</span>() {
+    <span class="code-tag">int</span> n, m;
+    cin &gt;&gt; n &gt;&gt; m;
+    
+    <span class="code-tag">int</span> startX, startY, endX, endY;
+    
+    <span class="code-tag">for</span> (<span class="code-tag">int</span> i = <span class="code-number">0</span>; i &lt; n; i++) {
+        <span class="code-tag">for</span> (<span class="code-tag">int</span> j = <span class="code-number">0</span>; j &lt; m; j++) {
+            cin &gt;&gt; maze[i][j];
+            <span class="code-tag">if</span> (maze[i][j] == <span class="code-string">'S'</span>) {
+                startX = i;
+                startY = j;
+            } <span class="code-tag">else if</span> (maze[i][j] == <span class="code-string">'T'</span>) {
+                endX = i;
+                endY = j;
+            }
+        }
+    }
+    
+    <span class="code-tag">int</span> result = bfsMaze(startX, startY, endX, endY, n, m);
+    
+    <span class="code-tag">if</span> (result == -<span class="code-number">1</span>) {
+        cout &lt;&lt; <span class="code-string">"无法到达终点"</span> &lt;&lt; endl;
+    } <span class="code-tag">else</span> {
+        cout &lt;&lt; <span class="code-string">"最短路径长度: "</span> &lt;&lt; result &lt;&lt; endl;
+    }
+    
+    <span class="code-tag">return</span> <span class="code-number">0</span>;
+}</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.5s;">算法对比</h2>
+
+        <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.5rem;"><strong>DFS：</strong>空间复杂度低，适合判断连通性、拓扑排序、寻找所有路径</li>
+          <li style="margin-bottom: 0.5rem;"><strong>BFS：</strong>能找到无权图的最短路径，适合层次遍历、最小步数问题</li>
+          <li style="margin-bottom: 0.5rem;"><strong>时间复杂度：</strong>两者都是O(V+E)，其中V是顶点数，E是边数</li>
+        </ul>
+
+        <blockquote class="glass-card anim-scale-in" style="animation-delay: 1.6s;">
+          <p>选择BFS还是DFS取决于具体问题。记住：求最短路径用BFS，判断连通性或枚举所有可能用DFS。</p>
+        </blockquote>
+
+        <p class="anim-fade-in" style="animation-delay: 1.7s;">熟练掌握这两种遍历方式是学习更高级图论算法（如Dijkstra、Floyd、Tarjan等）的基础，建议多做相关练习题目。</p>
+      </article>
+
+      <div class="post-back anim-fade-in" style="animation-delay: 1.8s;">
+        <a href="../posts.html" class="btn glass-card anim-scale-in" style="animation-delay: 1.9s;">View all writing</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer glass-card">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 L'xithral</p>
+      <p class="footer-text">All fragments converge</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

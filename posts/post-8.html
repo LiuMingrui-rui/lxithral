@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澎湃OS 2~3.3 设置修改教程 &mdash; L'xithral</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MiSans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body class="post-page">
+  <div class="dynamic-gradient"></div>
+  <div class="dotted-bg"></div>
+  <div class="background-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="header header-floating glass-card">
+    <div class="container">
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../posts.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <header class="header header-scrolled glass-card">
+    <div class="container">
+      <a href="../index.html" class="brand">L'xithral</a>
+      <nav class="nav">
+        <a href="../posts.html" class="nav-link">Writing</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <div class="font-weight-control">
+          <span class="font-weight-label">字重</span>
+          <input type="range" id="font-weight-slider-2" class="font-weight-slider" min="100" max="900" value="400" step="100">
+        </div>
+        <button id="theme-toggle-2" class="theme-toggle" aria-label="Toggle theme">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container" style="display: block; text-align: center;">
+      <h1 class="hero-title anim-fade-in" style="font-size: clamp(2rem, 5vw, 3.5rem);">澎湃OS 2~3.3 设置修改教程</h1>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="glass-card anim-fade-in">
+      <div class="post-meta">
+        <span>2026.04.19 · ROM定制 · 约 8 分钟阅读</span>
+      </div>
+
+      <article class="post-content">
+        <p class="lead anim-fade-in" style="animation-delay: 0.2s;">本教程来自 @kakashi1v1，酷安 @rkpsz。授权转载并修改部分代码，如果你在ROM中使用了本设置修改教程，需要标注原作者名字。</p>
+
+        <blockquote class="glass-card anim-scale-in" style="animation-delay: 0.3s;">
+          <p><strong>重要声明：</strong>无论付费还是免费使用，都需要标注 kakash1 或 rkpsz 的名字。</p>
+        </blockquote>
+
+        <h2 class="anim-fade-in" style="animation-delay: 0.4s;">准备工作</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 0.5s;">首先需要反编译设置APK。你可以：</p>
+        <ul style="margin-left: 2rem; margin-top: 0.5rem; margin-bottom: 1rem;">
+          <li style="margin-bottom: 0.5rem;">使用西米露开启包管理设置里面的全部内容，然后直接安装</li>
+          <li style="margin-bottom: 0.5rem;">或者修改内置进ROM包</li>
+        </ul>
+
+        <p class="anim-fade-in" style="animation-delay: 0.6s;"><strong>提示：</strong>想改文字可以直接在 miui_version_card 中修改，卡片第一行和第三行都可以自定义。长按版本卡片可以切换风格。</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 0.7s;">修改 DeviceBasicInfoPresenter</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 0.8s;">搜索类：<code>com/android/settings/device/DeviceBasicInfoPresenter</code></p>
+
+        <p class="anim-fade-in" style="animation-delay: 0.9s;">替换以下方法：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 1s;"><code><span class="code-tag">.method</span> <span class="code-tag">private</span> <span class="code-function">getLineNum</span>()<span class="code-tag">I</span>
+    <span class="code-tag">.registers</span> <span class="code-number">3</span>
+
+    iget-boolean v0, p0, <span class="code-class">Lcom/android/settings/device/DeviceBasicInfoPresenter;</span>-&gt;isUseMiui15CardStyle:<span class="code-tag">Z</span>
+
+    <span class="code-tag">const</span>/<span class="code-number">4</span> v1, <span class="code-number">0x2</span>
+
+    if-eqz v0, :cond_6
+
+    <span class="code-tag">return</span> v1
+
+    :cond_6
+    iget-object p0, p0, <span class="code-class">Lcom/android/settings/device/DeviceBasicInfoPresenter;</span>-&gt;mContext:<span class="code-class">Landroid/content/Context;</span>
+
+    invoke-static {p0}, <span class="code-class">Lcom/android/settings/MiuiUtils;</span>-&gt;isLandScape(<span class="code-class">Landroid/content/Context;</span>)<span class="code-tag">Z</span>
+
+    move-result p0
+
+    if-eqz p0, :cond_15
+
+    invoke-static {}, <span class="code-class">Lcom/android/settings/utils/SettingsFeatures;</span>-&gt;isSplitTabletDevice()<span class="code-tag">Z</span>
+
+    move-result p0
+
+    if-eqz p0, :cond_15
+
+    <span class="code-tag">const</span>/<span class="code-number">4</span> v1, <span class="code-number">0x3</span>
+
+    :cond_15
+    <span class="code-tag">return</span> v1
+<span class="code-tag">.end method</span></code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.1s;">隐藏保修期和本机权益</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1.2s;">使用 MT 管理器反编译设置，搜索方法：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 1.3s;"><code><span class="code-tag">.method</span> <span class="code-tag">public static</span> <span class="code-function">isLocalCnAndChinese</span>()<span class="code-tag">Z</span></code></pre>
+
+        <p class="anim-fade-in" style="animation-delay: 1.4s;">替换方法内容为：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 1.5s;"><code><span class="code-tag">.registers</span> <span class="code-number">2</span>
+
+<span class="code-tag">const</span>/<span class="code-number">4</span> v0, <span class="code-number">0x0</span>
+
+<span class="code-tag">return</span> v0
+<span class="code-tag">.end method</span></code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.6s;">导入 Smali 文件</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1.7s;">在 classes10.dex 中导入和替换 smail.zip 里面的全部类文件。</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 1.8s;">修改 ARSC 资源</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 1.9s;"><strong>如果你有会员：</strong>使用 arsc编辑器++ 打开 resources.arsc 添加资源</p>
+        <p class="anim-fade-in" style="animation-delay: 2s;"><strong>如果没有会员：</strong>使用普通arsc编辑器，手动一个一个添加（参考视频教程）</p>
+
+        <h3 class="anim-fade-in" style="animation-delay: 2.1s;">可选修改</h3>
+
+        <p class="anim-fade-in" style="animation-delay: 2.2s;">更改 <code>my_device_info_item_background_color</code> 为 <code>#55ffffff</code></p>
+        <p class="anim-fade-in" style="animation-delay: 2.3s;">这样 light mode 也有模糊效果（可选，可能导致其它卡片有点不好看）</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 2.4s;">添加 Drawable 资源</h2>
+
+        <pre class="anim-fade-in" style="animation-delay: 2.5s;"><code><span class="code-comment">----drawables------</span>
+
+<span class="code-tag">add in drawables:</span>
+
+    &lt;<span class="code-tag">path</span> <span class="code-tag">name</span>=<span class="code-string">"ic_device_oos_inner"</span>&gt;<span class="code-string">res/drawable/ic_device_oos_inner.xml</span>&lt;/<span class="code-tag">path</span>&gt;
+    &lt;<span class="code-tag">path</span> <span class="code-tag">name</span>=<span class="code-string">"ic_device_oos_bg"</span>&gt;<span class="code-string">res/drawable/ic_device_oos_bg.xml</span>&lt;/<span class="code-tag">path</span>&gt;
+    &lt;<span class="code-tag">path</span> <span class="code-tag">name</span>=<span class="code-string">"oos_progress_drawable"</span>&gt;<span class="code-string">res/drawable/oos_progress_drawable.xml</span>&lt;/<span class="code-tag">path</span>&gt;
+
+<span class="code-tag">add in type-info for drawable:</span>
+
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f085e90"</span> <span class="code-tag">name</span>=<span class="code-string">"ic_device_oos_inner"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f085e91"</span> <span class="code-tag">name</span>=<span class="code-string">"ic_device_oos_bg"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f085e93"</span> <span class="code-tag">name</span>=<span class="code-string">"oos_progress_drawable"</span> /&gt;</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 2.6s;">添加 ID 资源</h2>
+
+        <pre class="anim-fade-in" style="animation-delay: 2.7s;"><code><span class="code-comment">------ids-------</span>
+
+<span class="code-tag">add in ids:</span>
+
+    &lt;<span class="code-tag">id</span> <span class="code-tag">name</span>=<span class="code-string">"storage_progress_kchi"</span> /&gt;
+    &lt;<span class="code-tag">id</span> <span class="code-tag">name</span>=<span class="code-string">"device_name_in_banner"</span> /&gt;
+    &lt;<span class="code-tag">id</span> <span class="code-tag">name</span>=<span class="code-string">"build_dev_info"</span> /&gt;
+    &lt;<span class="code-tag">id</span> <span class="code-tag">name</span>=<span class="code-string">"device_info_wallpaper_blur_bg"</span> /&gt;
+    &lt;<span class="code-tag">id</span> <span class="code-tag">name</span>=<span class="code-string">"about_phone_rom_name_info"</span> /&gt;
+
+<span class="code-tag">add in type-info for ids:</span>
+
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0b5e51"</span> <span class="code-tag">name</span>=<span class="code-string">"storage_progress_kchi"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0b5e52"</span> <span class="code-tag">name</span>=<span class="code-string">"device_name_in_banner"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0b5e53"</span> <span class="code-tag">name</span>=<span class="code-string">"build_dev_info"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0b5e54"</span> <span class="code-tag">name</span>=<span class="code-string">"device_info_wallpaper_blur_bg"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0b5e55"</span> <span class="code-tag">name</span>=<span class="code-string">"about_phone_rom_name_info"</span> /&gt;</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 2.8s;">添加 Layout 资源</h2>
+
+        <pre class="anim-fade-in" style="animation-delay: 2.9s;"><code><span class="code-comment">------layout--------</span>
+
+<span class="code-tag">add in layout:</span>
+
+    &lt;<span class="code-tag">path</span> <span class="code-tag">name</span>=<span class="code-string">"device_info_item_kashi"</span>&gt;<span class="code-string">res/layout/device_info_item_kashi.xml</span>&lt;/<span class="code-tag">path</span>&gt;
+    &lt;<span class="code-tag">path</span> <span class="code-tag">name</span>=<span class="code-string">"storage_info_item_kashi"</span>&gt;<span class="code-string">res/layout/storage_info_item_kashi.xml</span>&lt;/<span class="code-tag">path</span>&gt;
+
+<span class="code-tag">add in type-info for layout:</span>
+
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0e566e"</span> <span class="code-tag">name</span>=<span class="code-string">"device_info_item_kashi"</span> /&gt;
+    &lt;<span class="code-tag">entry</span> <span class="code-tag">id</span>=<span class="code-string">"0x7f0e566f"</span> <span class="code-tag">name</span>=<span class="code-string">"storage_info_item_kashi"</span> /&gt;</code></pre>
+
+        <p class="anim-fade-in" style="animation-delay: 3s;">如果你没有会员就手动添加，教程看视频。</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 3.1s;">添加布局文件</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 3.2s;">在 <code>/res/layout</code> 添加两个layout，复制对应txt文件内容进去。另外两个文件 <code>device_layout.xml</code> 和 <code>miui_version_card.xml</code> 直接复制txt内容进行替换。</p>
+
+        <h2 class="anim-fade-in" style="animation-delay: 3.3s;">V2 修复（不要替换整个 Settings）</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 3.4s;">找到 <code>/res/layout/my_device_settings.xml</code></p>
+
+        <p class="anim-fade-in" style="animation-delay: 3.5s;">定位到以下内容：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 3.6s;"><code>                &lt;<span class="code-tag">View</span>
+                    <span class="code-tag">android:id</span>=<span class="code-string">"@id/version_card_click_view"</span>
+                    <span class="code-tag">android:layout_width</span>=<span class="code-string">"match_parent"</span>
+                    <span class="code-tag">android:layout_height</span>=<span class="code-string">"wrap_content"</span> /&gt;</code></pre>
+
+        <p class="anim-fade-in" style="animation-delay: 3.7s;">将 height 改为 <code>178dp</code>：</p>
+
+        <pre class="anim-fade-in" style="animation-delay: 3.8s;"><code>                &lt;<span class="code-tag">View</span>
+                    <span class="code-tag">android:id</span>=<span class="code-string">"@id/version_card_click_view"</span>
+                    <span class="code-tag">android:layout_width</span>=<span class="code-string">"match_parent"</span>
+                    <span class="code-tag">android:layout_height</span>=<span class="code-string">"178dp"</span> /&gt;</code></pre>
+
+        <h2 class="anim-fade-in" style="animation-delay: 3.9s;">Drawable 替换</h2>
+
+        <p class="anim-fade-in" style="animation-delay: 4s;">Drawable 也是一样的，只用替换就行。视频教程中一开始没修改drawable里面的内容，后面发现需要修改。</p>
+
+        <blockquote class="glass-card anim-scale-in" style="animation-delay: 4.1s;">
+          <p><strong>注意事项：</strong>所有修改前请务必备份原文件，修改完成后重新编译APK并测试功能是否正常。</p>
+        </blockquote>
+
+        <p class="anim-fade-in" style="animation-delay: 4.2s;">完成以上步骤后，你的澎湃OS设置页面就会呈现出全新的样式和布局。记得在使用过程中标注原作者信息！</p>
+      </article>
+
+      <div class="post-back anim-fade-in" style="animation-delay: 4.3s;">
+        <a href="../posts.html" class="btn glass-card anim-scale-in" style="animation-delay: 4.4s;">View all writing</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer glass-card">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 L'xithral</p>
+      <p class="footer-text">All fragments converge</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

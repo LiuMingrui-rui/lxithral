@@ -1,5 +1,5 @@
 
 git add .
-git commit -m Wowbushiba
+git commit -m New
 git push
 pause
