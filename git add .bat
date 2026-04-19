@@ -1,5 +1,5 @@
 
 git add .
-git commit -m New
+git commit -m Newpage
 git push
 pause
